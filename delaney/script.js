@@ -6,6 +6,8 @@ window.onload = function() {
 	showTarget(1, TARGET_1);
 	showTarget(2, TARGET_2);
 	showTarget(3, TARGET_3);
+	
+	doUpdate();
 };
 
 window.setInterval(function(){
@@ -17,9 +19,9 @@ function CountdownValue(targetDate) {
 	
 	this.months = targetDate.getMonth() - currentDate.getMonth();
 	this.days = targetDate.getDate() - currentDate.getDate();
-	this.hours = targetDate.getHours() - currentDate.getHours();
-	this.minutes = targetDate.getMinutes() - currentDate.getMinutes();
-	this.seconds = targetDate.getSeconds() - currentDate.getSeconds();
+	this.hours = targetDate.getHours() - currentDate.getHours() + 24;
+	this.minutes = targetDate.getMinutes() - currentDate.getMinutes() + 60;
+	this.seconds = targetDate.getSeconds() - currentDate.getSeconds() + 60;
 };
 
 // countdown: Integer corresponding to the countdown

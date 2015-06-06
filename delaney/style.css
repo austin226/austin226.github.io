@@ -1,0 +1,52 @@
+html {
+	background: rgba(229, 255, 229, 0.9);
+	font-family: sans-serif;
+}
+
+#main {
+	border-radius: 10px;
+	display: table;
+    margin: auto;
+}
+
+.countdown {
+	display: table-row;
+	margin: 10px;
+}
+
+.cell {
+	display: table-cell;
+	padding: 1em;
+	text-align: center;
+	border-radius: 20px;
+	background: rgba(232, 232, 232, 0.26);
+}
+
+.until_wrapper {
+	width: 40px;
+	background: rgba(128, 192, 128, 0.25);
+	font-weight: bold;
+}
+
+#countdown1 {
+	background: rgba(0, 255, 0, 0.5);
+}
+
+#countdown1 .cell {
+	border: 1px solid #080;
+}
+
+#countdown2 {
+	background: rgba(0, 128, 128, 0.5);
+}
+
+#countdown2 .cell {
+	border: 1px solid #088;
+}
+
+#countdown3 {
+	background: rgba(128, 64, 128, 0.5);
+}
+#countdown3 .cell {
+	border: 1px solid #848;
+}
