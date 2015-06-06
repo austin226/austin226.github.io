@@ -9,23 +9,23 @@ window.setInterval(function(){
 function CountdownValue(targetDate) {
 	var currentDate = new Date();
 	
-	this.weeks = targetDate.weeks - currentDate.weeks;
-	this.days = targetDate.days - currentDate.days;
-	this.hours = targetDate.hours - currentDate.hours;
-	this.minutes = targetDate.minutes - currentDate.minutes;
-	this.seconds = targetDate.seconds - currentDate.seconds;
+	this.months = targetDate.getMonth() - currentDate.getMonth();
+	this.days = targetDate.getDate() - currentDate.getDate();
+	this.hours = targetDate.getHours() - currentDate.getHours();
+	this.minutes = targetDate.getMinutes() - currentDate.getMinutes();
+	this.seconds = targetDate.getSeconds() - currentDate.getSeconds();
 }
 
 // countdown: Integer corresponding to the countdown
 // value: actual time to input
 function updateCountdown(countdown, value) {
-	var weekDiv = document.getElementById('week'+countdown);
-	var dayDiv = document.getElementById('day'+countdown);
-	var hourDiv = document.getElementById('hour'+countdown);
-	var minuteDiv = document.getElementById('minute'+countdown);
-	var secondDiv = document.getElementById('second'+countdown);
+	var monthDiv = document.getElementById('months'+countdown);
+	var dayDiv = document.getElementById('days'+countdown);
+	var hourDiv = document.getElementById('hours'+countdown);
+	var minuteDiv = document.getElementById('minutes'+countdown);
+	var secondDiv = document.getElementById('seconds'+countdown);
 	
-	weekDiv.innerHTML = value.weeks;
+	monthDiv.innerHTML = value.months;
 	dayDiv.innerHTML = value.days;
 	hourDiv.innerHTML = value.hours;
 	minuteDiv.innerHTML = value.minutes;
