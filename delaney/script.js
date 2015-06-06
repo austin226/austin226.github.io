@@ -37,7 +37,7 @@ function doUpdate() {
 	var cv2 = new CountdownValue(TARGET_2);
 	var cv3 = new CountdownValue(TARGET_3);
 	
-	updateCountdown(cv1, 1);
-	updateCountdown(cv2, 2);
-	updateCountdown(cv3, 3);
+	updateCountdown(1, cv1);
+	updateCountdown(2, cv2);
+	updateCountdown(3, cv3);
 }
