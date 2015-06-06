@@ -2,6 +2,12 @@ var TARGET_1 = new Date('June 16, 2015 00:00:00');
 var TARGET_2 = new Date('July 10, 2015 00:00:00');
 var TARGET_3 = new Date('August 16, 2015 00:00:00');
 
+window.onload = function() {
+	showTarget(1, TARGET_1);
+	showTarget(2, TARGET_2);
+	showTarget(3, TARGET_3);
+};
+
 window.setInterval(function(){
 	doUpdate();
 }, 1000);
@@ -14,7 +20,7 @@ function CountdownValue(targetDate) {
 	this.hours = targetDate.getHours() - currentDate.getHours();
 	this.minutes = targetDate.getMinutes() - currentDate.getMinutes();
 	this.seconds = targetDate.getSeconds() - currentDate.getSeconds();
-}
+};
 
 // countdown: Integer corresponding to the countdown
 // value: actual time to input
@@ -30,7 +36,7 @@ function updateCountdown(countdown, value) {
 	hourDiv.innerHTML = value.hours;
 	minuteDiv.innerHTML = value.minutes;
 	secondDiv.innerHTML = value.seconds;
-}
+};
 
 function doUpdate() {
 	var cv1 = new CountdownValue(TARGET_1);
@@ -40,4 +46,18 @@ function doUpdate() {
 	updateCountdown(1, cv1);
 	updateCountdown(2, cv2);
 	updateCountdown(3, cv3);
+};
+
+function showTarget(index, date) {
+	var untilDiv = document.getElementById('until'+index);
+	
+	var monthNames = ["January", "February", "March", "April", "May", "June",
+	  "July", "August", "September", "October", "November", "December"
+	];
+	
+	var month = monthNames[date.getMonth()];
+	var day = date.getDate();
+	
+	var output = month + '&nbsp;' + day;
+	untilDiv.innerHTML = output;
 }
