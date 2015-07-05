@@ -1,6 +1,6 @@
 var TARGET_1 = new Date('June 16, 2015 00:00:00');
-var TARGET_2 = new Date('July 10, 2015 00:00:00');
-var TARGET_3 = new Date('August 16, 2015 00:00:00');
+var TARGET_2 = new Date('July 10, 2015 23:30:00');
+var TARGET_3 = new Date('August 16, 2015 18:30:00');
 
 window.onload = function() {
 	showTarget(1, TARGET_1);
@@ -17,11 +17,48 @@ window.setInterval(function(){
 function CountdownValue(targetDate) {
 	var currentDate = new Date();
 	
-	this.months = targetDate.getMonth() - currentDate.getMonth();
-	this.days = targetDate.getDate() - currentDate.getDate();
-	this.hours = targetDate.getHours() - currentDate.getHours() + 24;
-	this.minutes = targetDate.getMinutes() - currentDate.getMinutes() + 60;
-	this.seconds = targetDate.getSeconds() - currentDate.getSeconds() + 60;
+	this.months = this.days = this.hours = this.minutes = this.seconds = 0;
+	
+	var dMonth = targetDate.getMonth() - currentDate.getMonth();
+	this.months = Math.abs(dMonth);
+	if (dMonth < 0) {
+		this.months = 0;
+		return;
+	}
+	
+	var dDate = targetDate.getDate() - currentDate.getDate();
+	this.days = Math.abs(dDate);
+	if (dMonth < 0 && dDate < 0) {
+		this.days = 0;
+		return;
+	}
+	
+	var dHours = targetDate.getHours() - currentDate.getHours();
+	var dMinutes = targetDate.getMinutes() - currentDate.getMinutes();
+	var dSeconds = targetDate.getSeconds() - currentDate.getSeconds();
+	
+	if (dSeconds < 0) {
+		dMinutes -= 1;
+	}
+	if (dMinutes < 0) {
+		dHours -= 1;
+	}
+	
+	if (dHours < 0) {
+		this.hours = dHours + 24;
+	} else {
+		this.hours = dHours;
+	}
+	if (dMinutes < 0) {
+		this.minutes = dMinutes + 60;
+	} else {
+		this.minutes = dMinutes;
+	}
+	if (dSeconds < 0) {
+		this.seconds = dSeconds + 60;
+	} else {
+		this.seconds = dSeconds;
+	}
 };
 
 // countdown: Integer corresponding to the countdown
@@ -59,7 +96,12 @@ function showTarget(index, date) {
 	
 	var month = monthNames[date.getMonth()];
 	var day = date.getDate();
+	var hour = date.getHours();
+	var minute = date.getMinutes();
 	
-	var output = month + '&nbsp;' + day;
+	if (hour < 10) hour = '0' + hour;
+	if (minute < 10) minute = '0' + minute;
+	
+	var output = month + '&nbsp;' + day + ' (' + hour + ':' + minute + ')';
 	untilDiv.innerHTML = output;
 }
